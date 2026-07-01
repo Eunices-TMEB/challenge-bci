@@ -5,12 +5,13 @@
     <p class="status loading">Cargando elementos...</p>
   } @else if (error()) {
     <p class="status error">{{ error() }}</p>
+    <button (click)="load()">Reintentar</button>
   } @else {
     @if (elements$ | async; as elements) {
       @if (elements.length === 0) {
         <p class="status">No hay elementos disponibles.</p>
       } @else {
-        <table>
+        <table aria-label="Listado de elementos">
           <thead>
             <tr>
               <th>ID</th>

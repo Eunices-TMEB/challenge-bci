@@ -19,6 +19,12 @@ export class TableComponent implements OnInit {
   public elements$!: Observable<Element[]>;
 
   public ngOnInit(): void {
+    this.load();
+  }
+
+  public load(): void {
+    this.loading.set(true);
+    this.error.set(null);
     this.elements$ = this.elementService.getElements().pipe(
       catchError((err: Error) => {
         this.error.set(err.message);
